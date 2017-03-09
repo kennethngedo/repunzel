@@ -113,6 +113,10 @@ if (isset($_GET['reason'])) {
                     if (isset($_GET['reference'])) {
                         $referenceCode = htmlspecialchars($_GET['reference']);
 
+                        $sql = "UPDATE investors SET account_status='active' WHERE reference_code='" . $referenceCode . "'";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+
                         echo '<p>Great Stuff.</p>
                 <p>Your account has been activated, you can now proceed to login with the email and password that you provided during your registration.</p>
                 <p>Cheers,</p><p> Admin.</p>';

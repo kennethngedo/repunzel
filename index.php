@@ -201,7 +201,7 @@ include_once 'settings.php';
                 <div class="col-md-6 test-monial-time-line-right">
                     <div class="test-monial-time-line-grid test-monial-time-line-grid-r1">
                         <div class="col-md-3 test-monial-time-line-left-pic">
-                            <img src="images/pic2.png" title="name" />
+                            <img src="images/pic2.jpg" title="name" />
                             <a href="#">Amara Chimdy</a>
                         </div>
                         <div class="col-md-9 test-monial-time-line-left-text">
@@ -211,7 +211,7 @@ include_once 'settings.php';
                     </div>
                     <div class="test-monial-time-line-grid test-monial-time-line-grid-r2">
                         <div class="col-md-3 test-monial-time-line-left-pic">
-                            <img src="images/pic3.png" title="name" />
+                            <img src="images/pic3.jpg" title="name" />
                             <a href="#">Purity Oginiwa</a>
                         </div>
                         <div class="col-md-9 test-monial-time-line-left-text">

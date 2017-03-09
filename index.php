@@ -59,7 +59,7 @@ include_once 'settings.php';
             });
         });
     </script>
-    <!----//End-top-nav-script---->
+    <!----//End-top-nav-script----->
 </head>
 <body>
     <!----start-container---->
@@ -68,7 +68,7 @@ include_once 'settings.php';
         <div class="container">
             <!---- start-logo---->
             <div class="logo">
-                <a href="index.php"><img src="images/logo.png" title="ddc" /></a>
+                <a href="index.php"><img src="images/logoed.png" title="ddc" /></a>
             </div>
             <!---- //End-logo---->
             <!----start-top-nav---->
@@ -192,7 +192,7 @@ include_once 'settings.php';
                             <p>This one sure pass other ones wey I don see ooo. so cool</p>
                         </div>
                         <div class="col-md-3 test-monial-time-line-left-pic">
-                            <img src="images/pic1.jpg" title="name" />
+                            <img src="images/pap.jpg" title="name" />
                             <a href="#">Fred Alabi</a>
                         </div>
                         <span class="grid-point"> </span>

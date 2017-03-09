@@ -66,7 +66,7 @@ $message = '<!DOCTYPE HTML>
             <div class="col-md-4 contact-left">
                 <h3><span> </span> Account Activation</h3>
                 <p>Hi ' . $_SESSION['new_user'] . '.</p>
-                <p>Click this <a href="www.dymondcash.com/?purpose=activation&reference="' . $_SESSION['reference'] .  '>link</a> to activate your account.</p>
+                <p>Click this <a href="www.' . $sitedomain .'/?purpose=Activation&reference="' . $_SESSION['reference'] .  '>link</a> to activate your account.</p>
                 <p>Or copy and paste this link below in your browser.</p>
                 <p style="color:blue; underline:true">Or copy and paste this link below in your browser.</p>
                 <p>Cheers,</p>
@@ -114,7 +114,7 @@ $message = '<!DOCTYPE HTML>
 </body>
 </html>';
         
-$to = $email;
+$to = $_SESSION['email'];
 $from = "admin@" . $sitedomain;
 $subject = "ACCOUNT ACTIVATION";
 

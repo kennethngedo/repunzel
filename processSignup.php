@@ -59,6 +59,7 @@ if ($password == $password_again) {
 //        include 'utilAccountActivation.php';
             $_SESSION['new_user'] = $firstname;
             $_SESSION['reference'] = $referenceCode;
+            $_SESSION['email'] = $email;
             
             $insertQuery = "INSERT INTO ph (provider, amount, status, transaction_code )"
                 . " VALUES('$email','$amount', '$status', '$transaction_code')";

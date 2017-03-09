@@ -94,6 +94,7 @@ $conn->close();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
                 });
             });</script>
+        <link rel="icon" type="image/png" href="/images/favicon.ico">
         <script type="text/javascript" src="/js/force.js"></script>
         <!--<script type="text/javascript" src="/js/processSignup.js"></script>-->
         <!---- start-smoth-scrolling---->

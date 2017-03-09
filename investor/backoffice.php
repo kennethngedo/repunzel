@@ -150,6 +150,7 @@ while ($row = $result->fetch_assoc()) {
 
 
             });</script>
+        <link rel="icon" type="image/png" href="/images/favicon.ico">
 
         <script type="text/javascript" src="/js/force.js"></script>
         <!--<script type="text/javascript" src="/js/processSignup.js"></script>-->

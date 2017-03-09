@@ -26,6 +26,7 @@ include_once 'settings.php';
                 });
             });
         </script>
+        <link rel="icon" type="image/png" href="/images/favicon.ico">
         <script type="text/javascript" src="/js/force.js"></script>
         <!---- start-smoth-scrolling---->
         <!-- Custom Theme files -->

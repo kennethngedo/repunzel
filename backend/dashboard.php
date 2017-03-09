@@ -540,7 +540,7 @@ echo '<ul class="list-group">
                                     <span class="glyphicon glyphicon-new-window"></span>
                                 </button>
                             </form>-->
-                        </div>
+                        <!--</div>-->
                     </div><br>
 <?php
 $newQuery = "SELECT * FROM news WHERE status='show'";

@@ -17,7 +17,7 @@ require_once "../settings.php";
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="icon" type="image/png" href="/images/favicon.ico">
         <style>
             body {
                 font: 400 15px/1.8 Lato, sans-serif;

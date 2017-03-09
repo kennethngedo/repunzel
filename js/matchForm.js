@@ -36,8 +36,62 @@ $(document).ready(function () {
         return false;
 
     });
+    
+    $('#adminGHForm').submit(function (event) {
 
 
+        var formData = $('#adminGHForm').serialize();
+
+        $.ajax({
+            url: '/backend/adminGHForm.php',
+            type: 'post',
+            data: formData,
+            success: matchResponce2,
+            error: function (xhr, desc, err) {
+                alert(xhr);
+                return false;
+            },
+            dataType: 'text'
+        });
+
+        return false;
+
+    });
+    
+     $('#newsForm').submit(function (event) {
+
+
+        var formData = $('#newsForm').serialize();
+
+        $.ajax({
+            url: '/backend/newsForm.php',
+            type: 'post',
+            data: formData,
+            success: matchResponce3,
+            error: function (xhr, desc, err) {
+                alert(xhr);
+                return false;
+            },
+            dataType: 'text'
+        });
+
+        return false;
+
+    });
+
+
+    function matchResponce2(data, status) {
+            alert("data");
+//            window.location = "/backend/dashboard.php";
+
+    }
+    
+    function matchResponce3(data, status) {
+            alert("news created");
+            window.location = "/backend/dashboard.php";
+
+    }
+    
     function matchResponce(data, status) {
 
         var h = parseInt(data);
@@ -57,6 +111,7 @@ $(document).ready(function () {
         }
 
     }
+
 
 
 

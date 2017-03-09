@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['admin']))
     header("location: ./index.php");
 
+$user = $_SESSION['admin'];
 
 $now = time();
 if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
@@ -216,7 +217,7 @@ require_once "../settings.php";
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>  <?php echo $_SESSION['admin']; ?></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>  <?php echo $user; ?></a></li>
                         <li><a href="./index.php" data-toggle="modal" >LOGOUT</a></li>
 
                     </ul>
@@ -235,6 +236,7 @@ require_once "../settings.php";
                 <li><a data-toggle="tab" href="#menu4">Manage Accounts</a></li>
                 <li><a data-toggle="tab" href="#menu2">Failed Helps</a></li>
                 <li><a data-toggle="tab" href="#menu3">Create News</a></li>
+                <li><a data-toggle="tab" href="#menu5">Admin GH</a></li>
             </ul>
 
             <div class="tab-content">
@@ -256,7 +258,7 @@ require_once "../settings.php";
                                             <select  type="password" name="cprovider0" class="form-control" id="cprovider0" required  >
                                                 <option value="" disabled selected style="display:none;">Select a provider</option>
                                                 <?php
-                                                $user = $_SESSION['admin'];
+                                                
                                                 $helpQuery = "SELECT * FROM ph WHERE status='pending'";
                                                 $result = $conn->query($helpQuery);
 
@@ -266,12 +268,10 @@ require_once "../settings.php";
                                                     $provider = $row['provider'];
                                                     $tc = $row['transaction_code'];
                                                     $spirit = $row['spirit'];
-                                                            
-                                                    
+
+
                                                     echo '<option value="' . $provider . '/' . $amount . '/' . $tc . '">' . $provider . ' - ' . $amount . '</option>';
-                                                    
-                                                    
-                                                    }
+                                                }
                                                 ?>
                                             </select>
                                         </div>
@@ -279,20 +279,20 @@ require_once "../settings.php";
                                             <label for="creceiver0"><span class="glyphicon glyphicon-hand-d"></span> Receiver</label>
                                             <select  type="password" name="creceiver0" class="form-control" id="creceiver0" required  >
                                                 <option value="" disabled selected style="display:none;">Select a receiver</option>
-                                                <?php
-                                                $helpQuery = "SELECT * FROM gh WHERE status='pending'";
-                                                $result = $conn->query($helpQuery);
+<?php
+$helpQuery = "SELECT * FROM gh WHERE status='pending'";
+$result = $conn->query($helpQuery);
 
 
-                                                while ($row = $result->fetch_assoc()) {
-                                                    $amountx = $row['amount'];
-                                                    $receiverx = $row['reciever'];
-                                                    
-                                                    if($receiverx != 'love@gmail.com'){
-                                                    echo '<option value="' . $receiverx . '/' . $amountx . '">' . $receiverx . ' - ' . $amountx . '</option>';
-                                                }
-                                                }
-                                                ?>
+while ($row = $result->fetch_assoc()) {
+    $amountx = $row['amount'];
+    $receiverx = $row['reciever'];
+
+    if ($receiverx != 'love@gmail.com') {
+        echo '<option value="' . $receiverx . '/' . $amountx . '">' . $receiverx . ' - ' . $amountx . '</option>';
+    }
+}
+?>
 
                                             </select>
                                         </div>
@@ -316,35 +316,35 @@ require_once "../settings.php";
                     <p>See all GH and PH stats. Both currently and all time stats.</p>
                     <div class="row" >
                         <div class="col-sm-6 ">
-                            <?php
-                            $user = $_SESSION['admin'];
-                            $phQuery = "SELECT * FROM ph WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
-                            $result1 = $conn->query($phQuery);
-                            $totalPH = $result1->num_rows;
+<?php
+$user = $_SESSION['admin'];
+$phQuery = "SELECT * FROM ph WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
+$result1 = $conn->query($phQuery);
+$totalPH = $result1->num_rows;
 
-                            $phQuery = "SELECT sum(amount) as totalph FROM ph WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
-                            $result3 = $conn->query($phQuery);
-                            $row = $result3->fetch_assoc();
-                            $totalPHMoney = $row['totalph'];
+$phQuery = "SELECT sum(amount) as totalph FROM ph WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
+$result3 = $conn->query($phQuery);
+$row = $result3->fetch_assoc();
+$totalPHMoney = $row['totalph'];
 
-                            $ghQuery = "SELECT * FROM gh WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
-                            $result2 = $conn->query($ghQuery);
-                            $totalGH = $result2->num_rows;
+$ghQuery = "SELECT * FROM gh WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
+$result2 = $conn->query($ghQuery);
+$totalGH = $result2->num_rows;
 
-                            $ghQuery = "SELECT sum(amount) as totalgh FROM gh WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
-                            $result4 = $conn->query($ghQuery);
-                            $row = $result4->fetch_assoc();
-                            $totalGHMoney = $row['totalgh'];
+$ghQuery = "SELECT sum(amount) as totalgh FROM gh WHERE status='pending' OR status='awaiting confirmation' OR status='matched'";
+$result4 = $conn->query($ghQuery);
+$row = $result4->fetch_assoc();
+$totalGHMoney = $row['totalgh'];
 
-                            $ghQuery = "SELECT * FROM investors";
-                            $result4 = $conn->query($ghQuery);
-                            $totalInvestors = $result4->num_rows;
+$ghQuery = "SELECT * FROM investors";
+$result4 = $conn->query($ghQuery);
+$totalInvestors = $result4->num_rows;
 
-                            $ghQuery = "SELECT sum(amount) as totalgh FROM gh WHERE status='active'";
-                            $result4 = $conn->query($ghQuery);
-                            $totalInvestorsActive = $result4->num_rows;
+$ghQuery = "SELECT sum(amount) as totalgh FROM gh WHERE status='active'";
+$result4 = $conn->query($ghQuery);
+$totalInvestorsActive = $result4->num_rows;
 
-                            echo '<ul class="list-group">
+echo '<ul class="list-group">
                                 <li class="list-group-item">
                                     <label  for="etransaction">Total GHs</label>
                                     <span style="" name="etransaction" id="etransaction" class="label label-warning pull-right">' . $totalGH . '</span>
@@ -377,31 +377,31 @@ require_once "../settings.php";
                                 </li>
 
                             </ul>';
-                            ?>
+?>
 
                         </div>
                         <div class="col-sm-6 ">
-                            <?php
-                            $user = $_SESSION['admin'];
-                            $phQuery = "SELECT * FROM ph";
-                            $result1 = $conn->query($phQuery);
-                            $totalPH = $result1->num_rows;
+<?php
+$user = $_SESSION['admin'];
+$phQuery = "SELECT * FROM ph";
+$result1 = $conn->query($phQuery);
+$totalPH = $result1->num_rows;
 
-                            $phQuery = "SELECT sum(amount) as totalph FROM ph";
-                            $result3 = $conn->query($phQuery);
-                            $row = $result3->fetch_assoc();
-                            $totalPHMoney = $row['totalph'];
+$phQuery = "SELECT sum(amount) as totalph FROM ph";
+$result3 = $conn->query($phQuery);
+$row = $result3->fetch_assoc();
+$totalPHMoney = $row['totalph'];
 
-                            $ghQuery = "SELECT * FROM gh";
-                            $result2 = $conn->query($ghQuery);
-                            $totalGH = $result2->num_rows;
+$ghQuery = "SELECT * FROM gh";
+$result2 = $conn->query($ghQuery);
+$totalGH = $result2->num_rows;
 
-                            $ghQuery = "SELECT sum(amount) as totalgh FROM gh";
-                            $result4 = $conn->query($ghQuery);
-                            $row = $result4->fetch_assoc();
-                            $totalGHMoney = $row['totalgh'];
+$ghQuery = "SELECT sum(amount) as totalgh FROM gh";
+$result4 = $conn->query($ghQuery);
+$row = $result4->fetch_assoc();
+$totalGHMoney = $row['totalgh'];
 
-                            echo '<ul class="list-group">
+echo '<ul class="list-group">
                                 <li class="list-group-item">
                                     <label  for="etransaction">All Time Total GHs</label>
                                     <span style="" name="etransaction" id="etransaction" class="label label-primary pull-right">' . $totalGH . '</span>
@@ -424,7 +424,7 @@ require_once "../settings.php";
                                 </li>
 
                             </ul>';
-                            ?>
+?>
 
                         </div>
                     </div>
@@ -439,15 +439,71 @@ require_once "../settings.php";
                         </div>
                     </div> <br>
                     <div id="putit">
-                        
+
                     </div>
                 </div>
                 <div id="menu2" class="tab-pane fade ">
                     <h2>Failed Helps</h2>
                     <p>See defaulters and take appropriate action.</p>
-                    
+
                     <div id="putmore">
-                        
+
+                    </div>
+
+                </div>
+                <div id="menu5" class="tab-pane fade ">
+                    <h2>Admin GH</h2>
+                    <p>Create get help for administrators.</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Modal Login form-->
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <form role="form" id="adminGHForm" name='adminGHForm'  action="" method="POST">
+                                        <div class="form-group">
+                                            <label for="admin"><span class="glyphicon glyphicon-hand-down"></span> Admin</label>
+                                            <select  type="password" name="admin" class="form-control" id="admin" required  >
+                                                <option value="" disabled selected style="display:none;">Select admin</option>
+                                                <?php
+                                                $user = $_SESSION['admin'];
+                                                $helpQuery = "SELECT * FROM investors WHERE priviledges='admin'";
+                                                $result = $conn->query($helpQuery);
+
+                                                while ($row = $result->fetch_assoc()) {
+                                                    $email = $row['email'];
+
+
+                                                    if ($email != 'love@gmail.com') {
+                                                        echo '<option value="' . $email . '">' . $email . '</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="amount"><span class="glyphicon glyphicon-hand-d"></span> Amount</label>
+                                            <select  type="password" name="amount" class="form-control" id="amount" required  >
+                                                <option value="" disabled selected style="display:none;">Select amount</option>
+                                                <option value="10000">10,000</option>
+                                                <option value="20000">20,000</option>
+                                                <option value="50000">50,000</option>
+                                                <option value="70000">70,000</option>
+                                                <option value="100000">100,000</option>
+
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-block">Make GH 
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </button>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -456,7 +512,7 @@ require_once "../settings.php";
                     <p>From here you can create news and manage existing news.</p>
                     <div class="row" >
                         <div class="col-sm-6 ">
-                            <form role="form" id="newsForm" action="createNews.php" method="POST">
+                            <form role="form" id="newsForm"  action="" method="POST" >
                                 <div class="form-group">
                                     <label for="title"><span class="glyphicon glyphicon-book"></span> Title </label>
                                     <input type="text" class="form-control" name="title" id="title" placeholder="Title of news here">
@@ -470,27 +526,38 @@ require_once "../settings.php";
                                 </button>
                             </form>
                         </div>
+<!--                        <div class="col-sm-6 ">
+                            <form role="form" id="newsForm"  action="" method="POST" >
+                                <div class="form-group">
+                                    <label for="title"><span class="glyphicon glyphicon-book"></span> Title </label>
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="Title of news here">
+                                </div>
+                                <div class="form-group">
+                                    <label for="msg"><span class="glyphicon glyphicon-book"></span> Message</label>
+                                    <textarea  class="form-control" name="msg" rows="5" id="msg" placeholder="Your news here"> </textarea>
+                                </div>
+                                <button type="submit" class="btn btn-block">Create 
+                                    <span class="glyphicon glyphicon-new-window"></span>
+                                </button>
+                            </form>-->
+                        </div>
                     </div><br>
-                    <?php
-                    $newQuery = "SELECT * FROM news WHERE status='show'";
-                    $result = $conn->query($newQuery);
+<?php
+$newQuery = "SELECT * FROM news WHERE status='show'";
+$result = $conn->query($newQuery);
 
-                    while ($row = $result->fetch_assoc()) {
-                        $title = $row['title'];
-                        $message = $row['message'];
+while ($row = $result->fetch_assoc()) {
+    $title = $row['title'];
+    $message = $row['message'];
 
-                        echo '<div class="row" >
+    echo '<div class="row" >
                             <div class="col-sm-12 ">
                                 <label >' . $title . ' </label>
                                 <p>' . $message . '</p>
-                                <div class="col-sm-6 ">
-                                <button type="submit" class="btn btn-block">Proceed 
-                                    <span class="glyphicon glyphicon-new-check"></span>
-                                </button>
-                                </div>
+                                
                             </div></div><br>';
-                    }
-                    ?>
+}
+?>
 
                 </div>
 

@@ -9,6 +9,8 @@ session_start();
 include_once '../settings.php';
 include_once '../handlerDbConnection.php';
 
+
+
 $now = time();
 if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
     // this session has worn out its welcome; kill it and start a brand new one
@@ -21,6 +23,10 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
 $_SESSION['discard_after'] = $now + 600;
 
 $user = $_SESSION['user'];
+
+if (!isset($user))
+    header("location: /index.php"); 
+
 $helpQuery = "SELECT * FROM ph WHERE status NOT LIKE '%confirmed%' AND (provider='" . $user . "' OR reciever='" . $user . "')";
 $result = $conn->query($helpQuery);
 $task = '';

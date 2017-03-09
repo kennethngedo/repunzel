@@ -75,7 +75,7 @@ include_once 'settings.php';
         <div class="container">
             <!---- start-logo---->
             <div class="logo">
-                <a href="/index.php"><img src="images/logo.png" title="ddc" /></a>
+                <a href="/index.php"><img src="images/logoed.png" title="ddc" /></a>
             </div>
             <!---- //End-logo---->
             <!----start-top-nav---->

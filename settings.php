@@ -8,5 +8,5 @@
 
 $sitename = 'Dymond Cash';
 
-$sitedomain = '';
+$sitedomain = 'dymondcash.com';
 

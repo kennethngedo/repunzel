@@ -85,7 +85,7 @@ include_once 'settings.php';
             </nav>
             <div class="clearfix"> </div>
             <div class="slide-text text-center">
-                <h1>Diamond Daily Cash</h1>
+                <h1><?php echo $sitename; ?></h1>
                 <span>We give with love.</span>
                 <a class="slide-btn scroll" href="#fea">Get started</a>
             </div>
@@ -211,7 +211,7 @@ include_once 'settings.php';
                     </div>
                     <div class="test-monial-time-line-grid test-monial-time-line-grid-r2">
                         <div class="col-md-3 test-monial-time-line-left-pic">
-                            <img src="images/pic2.png" title="name" />
+                            <img src="images/pic3.png" title="name" />
                             <a href="#">Purity Oginiwa</a>
                         </div>
                         <div class="col-md-9 test-monial-time-line-left-text">

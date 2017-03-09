@@ -9,6 +9,17 @@ session_start();
 include_once '../settings.php';
 include_once '../handlerDbConnection.php';
 
+$now = time();
+if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
+    // this session has worn out its welcome; kill it and start a brand new one
+    session_unset();
+    session_destroy();
+    session_start();
+}
+
+// either new or old, it should live at most for another hour
+$_SESSION['discard_after'] = $now + 600;
+
 $user = $_SESSION['user'];
 $helpQuery = "SELECT * FROM ph WHERE status NOT LIKE '%confirmed%' AND (provider='" . $user . "' OR reciever='" . $user . "')";
 $result = $conn->query($helpQuery);
@@ -330,7 +341,7 @@ while ($row = $result->fetch_assoc()) {
 
             var diff = endDate - today;
             var hoursdiff = Math.floor(diff / 3600000);
-            alert((hoursdiff));
+//            alert((hoursdiff));
 
             $('#tleft').html("Time Left: " + hoursdiff + " HOURS");
 

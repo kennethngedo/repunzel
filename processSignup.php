@@ -47,7 +47,7 @@ if($package == 'starter'){
 
 if ($password == $password_again) {
     if ($result->num_rows > 0) {
-        header("location: /signup.php?package=" . $package . "&?error=the email you provided is already in use");
+        header("location: /signup.php?package=" . $package . "&error=the email you provided is already in use");
     } else {
         //go ahead and insert into the database
         $insertQuery = "INSERT INTO investors (firstname, lastname, email, phone,"
@@ -64,13 +64,14 @@ if ($password == $password_again) {
             
             $result = $conn->query($insertQuery);
             
+            include './utilAccountActivation.php';
             header("location: /signupSuccess.php?reason=Signup Success");
         } else {
-            header("location: /signup.php?package=" . $package . "&?error=something went wrong, please try again");
+            header("location: /signup.php?package=" . $package . "&error=something went wrong, please try again");
         }
     }
 } else {
-    header("location: /signup.php?package=" . $package . "&?error=passwords do not match");
+    header("location: /signup.php?package=" . $package . "&error=passwords do not match");
 }
 
 $conn->close();

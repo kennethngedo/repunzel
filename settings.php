@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-$sitename = 'Daily Diamond Cash';
+$sitename = 'Dymond Cash';
 
 $sitedomain = '';
 

@@ -122,7 +122,9 @@ include_once 'settings.php';
             </div>
             <div class="col-md-4 contact-left">
                 <h3><span> </span> Signup</h3>
-<?php if (isset($_GET['error'])) echo '<p class="conditions"> <label id="alert"><span>*</span>' . $_GET['error'] . '</label></p>'; ?>
+<?php if (isset($_GET['error'])) {
+    $error = htmlspecialchars($_GET['error']);
+    echo '<p class="conditions"> <label id="alert"><span>*</span>' . $error . '</label></p>';} ?>
                 <form name="signupForm" id="signupForm" action="processSignup.php" method="POST" >
                     <input name="firstname" id="firstname" type="text" required placeholder="Firstname *" >
                     <input name="lastname" id="lastname" type="text" placeholder="Lastname *">

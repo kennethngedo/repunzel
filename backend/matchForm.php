@@ -28,12 +28,17 @@ if ($provider == $receiver) {
 
         if ($result->num_rows > 1) {
             $sql = "UPDATE gh SET status='matched', amount='" . $amount . "', transaction_code='" . $tc . "' WHERE reciever='" . $receiver . "' AND status='pending' AND duality='1'";
+            $stmt = $conn->prepare($sql);
+        $stmt->execute();
+            
         } else {
             $sql = "UPDATE gh SET status='matched', amount='" . $amount . "', transaction_code='" . $tc . "' WHERE reciever='" . $receiver . "' AND status='pending'";
+            $stmt = $conn->prepare($sql);
+        $stmt->execute();
+            
         }
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        
 
         $sql = "UPDATE ph SET status='matched', reciever='" . $receiver . "', initiation_date='" . $initiation_date . "', completion_date='" . $completion_date . "' WHERE transaction_code='" . $tc . "'";
         $stmt = $conn->prepare($sql);

@@ -265,9 +265,13 @@ require_once "../settings.php";
                                                     $code = $row['transaction_code'];
                                                     $provider = $row['provider'];
                                                     $tc = $row['transaction_code'];
-
+                                                    $spirit = $row['spirit'];
+                                                            
+                                                    
                                                     echo '<option value="' . $provider . '/' . $amount . '/' . $tc . '">' . $provider . ' - ' . $amount . '</option>';
-                                                }
+                                                    
+                                                    
+                                                    }
                                                 ?>
                                             </select>
                                         </div>
@@ -283,8 +287,10 @@ require_once "../settings.php";
                                                 while ($row = $result->fetch_assoc()) {
                                                     $amountx = $row['amount'];
                                                     $receiverx = $row['reciever'];
-
+                                                    
+                                                    if($receiverx != 'love@gmail.com'){
                                                     echo '<option value="' . $receiverx . '/' . $amountx . '">' . $receiverx . ' - ' . $amountx . '</option>';
+                                                }
                                                 }
                                                 ?>
 

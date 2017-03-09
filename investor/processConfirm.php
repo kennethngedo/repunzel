@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $earnings = $row['earnings_total'];
+    $priviledges = $row['priviledges'];
     $package = $row['package'];
     $earnings = $earnings + $amount + $amount;
 
@@ -50,17 +51,24 @@ if ($result->num_rows > 0) {
     } else {
         $amount1 = '100000';
     }
-    $transaction_code = strtoupper(substr(md5(uniqid("this is my site 491", true)), 0, 10));
-    $insertQuery = "INSERT INTO ph (provider, amount, status, transaction_code )"
-            . " VALUES('$reciever','$amount1', '$status', '$transaction_code')";
-    $conn->query($insertQuery);
+    if ($priviledges == 'user') {
+        $transaction_code = strtoupper(substr(md5(uniqid("this is my site 491", true)), 0, 10));
+        $insertQuery = "INSERT INTO ph (provider, amount, status, transaction_code )"
+                . " VALUES('$reciever','$amount1', '$status', '$transaction_code')";
+        $conn->query($insertQuery);
+    } else {
+        $insertQuery = "INSERT INTO gh (reciever, amount )"
+                . " VALUES('$reciever','$amount')";
+
+        $conn->query($insertQuery);
+    }
 
 
     $sql = "SELECT * FROM investors WHERE email = '" . $reciever . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $earnings = $row['earnings_total'];
-    $vip = $row['vip'];
+    $priviledges = $row['priviledges'];
     $earnings = $earnings - $amount;
 
     if ($earnings <= 0) {
@@ -69,7 +77,7 @@ if ($result->num_rows > 0) {
         $stmt->execute();
     }
 
-    if ($vip == 'No') {
+    if ($priviledges == 'user') {
         $insertQuery = "INSERT INTO gh (reciever, amount )"
                 . " VALUES('$provider','$amount')";
 

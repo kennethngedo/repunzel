@@ -68,7 +68,7 @@ $message = '<!DOCTYPE HTML>
                 <p>Hi ' . $_SESSION['new_user'] . '.</p>
                 <p>Click this <a href="www.' . $sitedomain .'/?purpose=Activation&reference="' . $_SESSION['reference'] .  '>link</a> to activate your account.</p>
                 <p>Or copy and paste this link below in your browser.</p>
-                <p style="color:blue; underline:true">Or copy and paste this link below in your browser.</p>
+                <p style="color:blue; underline:true">www.' . $sitedomain .'/?purpose=Activation&reference="' . $_SESSION['reference'] .  '</p>
                 <p>Cheers,</p>
                 <p>Admin.</p>
             </div>
@@ -87,7 +87,7 @@ $message = '<!DOCTYPE HTML>
         <div class="container">
             <div class="footer-left">
                     <!--<a href="#"><img src="images/footer-logo.png" title="mabur" /></a>-->
-                <p><a href="#">(c) diamond daily cash, 2017.</a></p>
+                <p><a href="#">(c) dymond daily cash, 2017.</a></p>
             </div>
             <script type="text/javascript">
                 $(document).ready(function () {

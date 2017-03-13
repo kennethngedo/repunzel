@@ -55,7 +55,7 @@ $(document).ready(function () {
             return false;
         };
         
-        var myFunction = function (evt) {
+        var myFunction3 = function (evt) {
             var attribute = this.getAttribute("name");
 //            alert(attribute);
 

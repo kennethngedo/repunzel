@@ -223,7 +223,7 @@ include_once 'settings.php';
                             <a href="#">Amara Chimdy</a>
                         </div>
                         <div class="col-md-9 test-monial-time-line-left-text">
-                            <p>I have been on this platform for 3 weeks now nd dey have neva dissapointed me, lets keep phing and ghing to keep it going. Thanks</p>
+                            <p>I have been on this platform for 3 days now nd dey have neva dissapointed me, lets keep phing and ghing to keep it going. Thanks</p>
                         </div>
                         <span class="grid-point grid-point1"> </span>
                     </div>

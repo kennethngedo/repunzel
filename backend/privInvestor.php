@@ -15,7 +15,7 @@ if($status == 'admin'){
     $status = 'user';
     
 }else{
-    $status = 'user';
+    $status = 'admin';
 }
 
 

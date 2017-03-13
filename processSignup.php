@@ -73,7 +73,8 @@ if ($password == $password_again) {
             include './utilAccountActivation.php';
             header("location: /signupSuccess.php?reason=Signup Success");
         } else {
-            header("location: /signup.php?package=" . $package . "&error=something went wrong, please try again");
+            die('Connect Error: ' . $mysqli->connect_error);
+//            header("location: /signup.php?package=" . $package . "&error=something went wrong, please try again");
         }
     }
 } else {

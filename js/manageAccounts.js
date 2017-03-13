@@ -55,6 +55,14 @@ $(document).ready(function () {
             return false;
         };
         
+        function matchResponce3(data, status) {
+
+        document.getElementById('search').value = data;
+        $("#search").keyup();
+
+
+    }
+        
         var myFunction3 = function (evt) {
             var attribute = this.getAttribute("name");
 //            alert(attribute);

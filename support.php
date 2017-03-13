@@ -91,7 +91,7 @@ include './handlerDbConnection.php';
         <div class="container">
             <div class="col-md-12 contact-left">
              <h3><span> </span> Support</h3>
-             <p>Send an email to <a style="color: #00A2C1">support@dymondcash.com</a> or <a style="color: #00A2C1">admin@dymondcash.com</a> for inqueries and complaints.</p>
+             <p>Send an email to <a style="color: #00A2C1">dymondcare@gmail.com</a> for inqueries and complaints.</p>
             </div>
             
 

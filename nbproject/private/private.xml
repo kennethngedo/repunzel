@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp64/www/index.php</file>
-            <file>file:/C:/wamp64/www/investor/processConfirm.php</file>
-            <file>file:/C:/wamp64/www/investor/processUpgrade.php</file>
-            <file>file:/C:/wamp64/www/processLogin.php</file>
-            <file>file:/C:/wamp64/www/investor/processUpload.php</file>
-            <file>file:/C:/wamp64/www/investor/backoffice.php</file>
-            <file>file:/C:/wamp64/www/processSignup.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

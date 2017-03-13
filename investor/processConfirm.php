@@ -48,8 +48,10 @@ if ($result->num_rows > 0) {
         $amount1 = '50000';
     } else if ($package == 'gold') {
         $amount1 = '70000';
-    } else {
+    } else if($package == 'platinum'){
         $amount1 = '100000';
+    }else{
+        $amount1 = '200000';
     }
     if ($priviledges == 'user') {
         $transaction_code = strtoupper(substr(md5(uniqid("this is my site 491", true)), 0, 10));

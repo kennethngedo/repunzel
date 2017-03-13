@@ -8,11 +8,53 @@ session_start();
 
 //make all imports here
 include_once 'settings.php';
+include './handlerDbConnection.php';
+
+$userExits = false;
+if (isset($_POST['purpose'])) {
+    $purpose = htmlspecialchars($_POST['purpose']);
+    if ($purpose == 'start') {
+        $email = htmlspecialchars($_POST['email']);
+
+        //check if email already exist
+        $sql = "SELECT * FROM investors WHERE email = '$email'";
+        $result = $conn->query($sql);
+
+        if ($row = $result->fetch_assoc()) {
+            $question = $row['security_question'];
+            $sqa = $row['answer_security_question'];
+            $userExits = true;
+        } else {
+            header("location: /fPassword.php?package=" . $package . "&error=user does not exist.");
+        }
+    } else {
+        $email = htmlspecialchars($_POST['email']);
+        $pw = htmlspecialchars($_POST['pw']);
+        $pwa = htmlspecialchars($_POST['pwa']);
+        $sqa = strtolower(htmlspecialchars($_POST['qa']));
+        $qa = strtolower(htmlspecialchars($_POST['realqa']));
+
+        if (($pw == $pwa)) {
+
+            if ($qa == $sqa) {
+                $sql = "UPDATE investors SET password='" . $pw . "' WHERE email='" . $email . "'";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+            } else {
+                header("location: /fPassword.php?package=" . $package . "&error=Your answer is wrong, try again or contact the admin");
+            }
+        } else {
+            header("location: /fPassword.php?package=" . $package . "&error=Passwords do not match");
+        }
+    }
+} else {
+    
+}
 ?>
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title><?php echo $sitename; ?> | Login </title>
+        <title><?php echo $sitename; ?> | Forgot Password </title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.min.js"></script>
@@ -85,36 +127,57 @@ include_once 'settings.php';
             <!----//End-top-nav---->
         </div>
     </div>
-    
+
     <div id="fea" class="features">
         <div class="container">
             <div class="col-md-3 contact-left">
-             
+
 
             </div>
             <div class="col-md-6 contact-left">
-                <h3><span> </span> Login</h3>
-<?php if (isset($_GET['error'])) echo '<p class="conditions"> <label id="alert"><span>*</span>' . $_GET['error'] . '</label></p>'; ?>
-                <form name="loginForm" id="loginForm" action="processLogin.php" method="POST" >
-                    <input name="email" id="email" type="email" placeholder="Email *">
-                    <input name="password" id="password" type="password" placeholder="Password *">
+                <h3><span> </span> Change Password</h3>
+                <?php if (isset($_GET['error'])) echo '<p class="conditions"> <label id="alert"><span>*</span>' . $_GET['error'] . '</label></p>'; ?>
+                <?php
+                if (isset($question))
+                    echo '<p>' . $question . ' </p>';
+                ;
+                if (!isset($passwordChanged)) {
+                    if ($userExits == true) {
+                            echo '<form name="cPForm" id="cPForm" action="fPassword.php" method="POST" >
+                        <input name="email" id="email" type="text" hidden value="' . $email . '">
+                        <input name="qa" id="qa" type="text" placeholder="Answer to security question">
+                        <input name="pw" id="pw" type="password" placeholder="Your new password">
+                        <input name="pwa" id="pwa" type="password"  placeholder="Your new password again">
+                        <input name="purpose" id="purpose" type="text" hidden value="change">
+                        <input name="realqa" id="realqa" type="text" hidden value="' . $sqa . '">
+                        <span class="submit-btn"><input type="submit" value="Change"></span>
+                    </form><br>';
+                    } else {
+                            echo '<form name="emailForm" id="emailForm" action="fPassword.php" method="POST" >
+                        <input name="email" id="email" type="email" placeholder="Enter your email *">
+                        <input name="purpose" id="purpose" type="text" hidden value="start">
+                        <span class="submit-btn"><input type="submit" value="Proceed"></span>
+                    </form><br>';
+                    }
+                } else {
+                        echo '<p > <label ><span>*</span>password change</label></p>';
+                }
+                ?>
 
-                    <span class="submit-btn"><input type="submit" value="Login"></span>
-                </form><br>
-                <a href="fPassword.php" ><p style="color: #00A2C1">forgot password?</p></a>
+
             </div>
             <div class="col-md-3 contact-left">
-             
+
 
             </div>
 
             <div class="clearfix"> </div>
-            
+
         </div>
     </div>
 
-    
-    
+
+
     <!----start-footer---->
     <div class="footer">
         <div class="container">

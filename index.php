@@ -44,21 +44,21 @@ include_once 'settings.php';
     <!----//webfonts---->
     <!----start-top-nav-script---->
     <script>
-        $(function () {
-            var pull = $('#pull');
-            menu = $('nav ul');
-            menuHeight = menu.height();
-            $(pull).on('click', function (e) {
-                e.preventDefault();
-                menu.slideToggle();
+            $(function () {
+                var pull = $('#pull');
+                menu = $('nav ul');
+                menuHeight = menu.height();
+                $(pull).on('click', function (e) {
+                    e.preventDefault();
+                    menu.slideToggle();
+                });
+                $(window).resize(function () {
+                    var w = $(window).width();
+                    if (w > 320 && menu.is(':hidden')) {
+                        menu.removeAttr('style');
+                    }
+                });
             });
-            $(window).resize(function () {
-                var w = $(window).width();
-                if (w > 320 && menu.is(':hidden')) {
-                    menu.removeAttr('style');
-                }
-            });
-        });
     </script>
     <!----//End-top-nav-script----->
 </head>
@@ -103,36 +103,53 @@ include_once 'settings.php';
             </div>
             <!---- start-features-grids---->
             <div class="features-grids text-center">
-                <div class="col-md-3 features-grid">
+                <div class="col-md-3 features-grid"><a href="signup.php?package=starter">
                     <span class="fea-icon1"><i class="fa fa-star"> </i> </span>
-                    <h3><a href="signup.php?package=starter">Starter</a></h3>
+                    <h3>Starter</h3>
                     <p>You pay 10,000.</p>
-                    <p>You earn 20,000.</p>
+                    <p>You earn 20,000.</p></a>
                 </div>
-                <div class="col-md-3 features-grid">
-                    <span class="fea-icon1"><i style="color:tan" class="fa fa-star"> </i> </span>
-                    <h3><a href="signup.php?package=bronze">Bronze</a></h3>
-                    <p>You pay 20,000.</p>
-                    <p>You earn 40,000.</p>
-                </div>
-                <div class="col-md-3 features-grid">
-                    <span class="fea-icon1"><i style="color:silver" class="fa fa-star"> </i> </span>
-                    <h3><a href="signup.php?package=silver">Silver</a></h3>
-                    <p>You pay 50,000.</p>
-                    <p>You earn 100,000.</p>
-                </div>
-                <div class="col-md-3 features-grid">
-                    <span class="fea-icon1"><i style="color:gold" class="fa fa-star"> </i> </span>
-                    <h3><a href="signup.php?package=gold">Gold</a></h3>
-                    <p>You pay 70,000.</p>
-                    <p>You earn 140,000.</p>
-                </div>
-                <div class="col-md-3 features-grid">
-                    <span class="fea-icon1"><i style="color:plum" class="fa fa-star"> </i> </span>
-                    <h3><a href="signup.php?package=platinum">Platinum</a></h3>
-                    <p>You pay 100,000.</p>
-                    <p>You earn 200,000.</p>
-                </div>
+                    <div class="col-md-3 features-grid">                
+                        <a href="signup.php?package=bronze">
+                        <span class="fea-icon1"><i style="color:tan" class="fa fa-star"> </i> </span>
+                        <h3>Bronze</h3>
+                        <p>You pay 20,000.</p>
+                        <p>You earn 40,000.</p>               
+                        </a>
+                    </div>
+                    <div class="col-md-3 features-grid">                
+                        <a href="signup.php?package=silver">
+                        <span class="fea-icon1"><i style="color:silver" class="fa fa-star"> </i> </span>
+                        <h3>Silver</h3>
+                        <p>You pay 50,000.</p>
+                        <p>You earn 100,000.</p>       
+                        </a>
+                    </div>
+                    <div class="col-md-3 features-grid">                
+                        <a href="signup.php?package=gold">
+                        <span class="fea-icon1"><i style="color:gold" class="fa fa-star"> </i> </span>
+                        <h3>Gold</h3>
+                        <p>You pay 70,000.</p>
+                        <p>You earn 140,000.</p>               
+                        </a>
+                    </div>
+                    <div class="col-md-3 features-grid">                
+                        <a href="signup.php?package=platinum">
+                        <span class="fea-icon1"><i style="color:#843534" class="fa fa-star"> </i> </span>
+                        <h3>Platinum</h3>
+                        <p>You pay 100,000.</p>
+                        <p>You earn 200,000.</p>                
+                        </a>
+                    </div>
+                    <div class="col-md-3 features-grid">
+                                        <a href="signup.php?package=uranium">
+                        <span class="fea-icon1"><i style="color:plum" class="fa fa-star"> </i> </span>
+                        <h3>Uranium</h3>
+                        <p>You pay 200,000.</p>
+                        <p>You earn 400,000.</p>
+                                        </a>
+
+                    </div>
                 <div class="clearfix"> </div>
             </div>
             <!---- //End-features-grids---->
@@ -233,7 +250,7 @@ include_once 'settings.php';
     <div class="clearfix"> </div>
     <!----//End-testmonial-time-line---->
 
-    
+
 
     <!----start-footer---->
     <div class="footer">

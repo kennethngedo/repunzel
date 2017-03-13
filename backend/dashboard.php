@@ -293,7 +293,6 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 ?>
-
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-block">Confirm 
@@ -484,14 +483,14 @@ echo '<ul class="list-group">
                                         </div>
                                         <div class="form-group">
                                             <label for="amount"><span class="glyphicon glyphicon-hand-d"></span> Amount</label>
-                                            <select  type="password" name="amount" class="form-control" id="amount" required  >
+                                            <select  type="password" name="amount" class="form-control" id="amount" required >
                                                 <option value="" disabled selected style="display:none;">Select amount</option>
                                                 <option value="10000">10,000</option>
                                                 <option value="20000">20,000</option>
                                                 <option value="50000">50,000</option>
                                                 <option value="70000">70,000</option>
                                                 <option value="100000">100,000</option>
-
+                                                <option value="200000">200,000</option>
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-block">Make GH 
@@ -499,8 +498,6 @@ echo '<ul class="list-group">
                                         </button>
                                     </form>
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -549,13 +546,19 @@ $result = $conn->query($newQuery);
 while ($row = $result->fetch_assoc()) {
     $title = $row['title'];
     $message = $row['message'];
+    $id = $row['id'];
+    $status = $row['status'];
+    
+    
 
-    echo '<div class="row" >
+    $strng = '<div class="row" >
                             <div class="col-sm-12 ">
                                 <label >' . $title . ' </label>
                                 <p>' . $message . '</p>
-                                
-                            </div></div><br>';
+                                <span  name="'. $id .'" id="'. $id .'" class=" newsdelete label label-danger pull-right">delete</span></div></div>';
+    
+    
+    echo $strng;
 }
 ?>
 

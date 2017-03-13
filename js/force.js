@@ -14,6 +14,8 @@ $(document).ready(function () {
         document.getElementById('homeBt').addEventListener('click', myHomefunction);
     if (document.getElementById('upgradeBt'))
         document.getElementById('upgradeBt').addEventListener('click', myUpgradefunction);
+    if (document.getElementById('supportBt'))
+        document.getElementById('supportBt').addEventListener('click', mySupportfunction);
     
 
     function myLoginfunction() {
@@ -28,7 +30,9 @@ $(document).ready(function () {
         window.location = '/index.php';
     }
     
-   
+   function mySupportfunction() {
+        window.location = '/support.php';
+    }
 
     function myUpgradefunction() {
         var package = document.getElementById('upgradeBt').getAttribute('name');

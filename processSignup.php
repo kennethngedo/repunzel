@@ -20,6 +20,8 @@ $accountname = strtoupper(htmlspecialchars($_POST['accountname']));
 $accountnumber = htmlspecialchars($_POST['accountnumber']);
 $bank = strtoupper(htmlspecialchars($_POST['bank']));
 $phone = htmlspecialchars($_POST['phone']);
+$securityquestion = htmlspecialchars($_POST['securityquestion']);
+$securityQuestionAnswer = strtolower(htmlspecialchars($_POST['securityQuestionAnswer']));
 
 //generate reference code for new investor
 $referenceCode = strtoupper(substr(md5(uniqid($email, true)), 0, 10));
@@ -43,6 +45,8 @@ if($package == 'starter'){
     $amount = '70000';
 }else if($package == 'platinum'){
     $amount = '100000';
+}else{
+   $amount = '200000'; 
 }
 
 if ($password == $password_again) {
@@ -51,9 +55,9 @@ if ($password == $password_again) {
     } else {
         //go ahead and insert into the database
         $insertQuery = "INSERT INTO investors (firstname, lastname, email, phone,"
-                . " password, reference_code, account_status, package, account_name, account_number, bank )"
+                . " password, reference_code, account_status, package, account_name, account_number, bank, security_question, answer_security_question )"
                 . " VALUES('$firstname','$lastname', '$email', '$phone', '$password',"
-                . " '$referenceCode', '$status', '$package', '$accountname', '$accountnumber', '$bank')";
+                . " '$referenceCode', '$status', '$package', '$accountname', '$accountnumber', '$bank', '$securityquestion', '$securityQuestionAnswer')";
          
         if ($conn->query($insertQuery) === TRUE) {
 //        include 'utilAccountActivation.php';

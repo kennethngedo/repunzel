@@ -199,13 +199,14 @@ while ($row = $result->fetch_assoc()) {
         <div class="container">
             <!---- start-logo---->
             <div class="logo">
-                <a href="/index.php"><img src="/images/logo.png" title="ddc" /></a>
+                <a href="/index.php"><img src="/images/logoed.png" title="ddc" /></a>
             </div>
             <!---- //End-logo---->
             <!----start-top-nav---->
             <nav class="top-nav">
                 <ul class="top-nav">
                     <li ><a href="#"><?php echo $user; ?></a></li>
+                    <li id="supportBt"><a href="support.php">Support</a></li>
                     <li id="loginBt" class="contatct-active"><a href="/login.php">Logout</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="/images/nav-icon.png" title="menu" /></a>
@@ -252,8 +253,13 @@ while ($row = $result->fetch_assoc()) {
                     <p>You pay 70,000.</p>
                     <p>You earn 140,000.</p>
                     <p><a name="platinum" id="upgradeBt">upgrade</a></p>';
-                        } else {
+                        } else if ($package == 'platinum') {
                             echo '<h3><a href="#">Platinum</a></h3>
+                    <p>You pay 100,000.</p>
+                    <p>You earn 200,000.</p>
+                     <p><a name="uranium" id="upgradeBt">upgrade</a></p>';
+                        }else{
+                            echo '<h3><a href="#">Uranium</a></h3>
                     <p>You pay 100,000.</p>
                     <p>You earn 200,000.</p>';
                         }
@@ -295,8 +301,13 @@ while ($row = $result->fetch_assoc()) {
                     <p>You pay 70,000.</p>
                     <p>You earn 140,000.</p>
                     <p><a name="platinum" id="upgradeBt">upgrade</a></p>';
-                        } else {
+                        } else if ($package == 'platinum') {
                             echo '<h3><a href="#">Platinum</a></h3>
+                    <p>You pay 100,000.</p>
+                    <p>You earn 200,000.</p>
+                     <p><a name="uranium" id="upgradeBt">upgrade</a></p>';
+                        }else{
+                            echo '<h3><a href="#">Uranium</a></h3>
                     <p>You pay 100,000.</p>
                     <p>You earn 200,000.</p>';
                         }

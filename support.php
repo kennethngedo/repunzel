@@ -8,11 +8,13 @@ session_start();
 
 //make all imports here
 include_once 'settings.php';
+
+include './handlerDbConnection.php';
 ?>
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title><?php echo $sitename; ?> | Login </title>
+        <title><?php echo $sitename; ?> | Support </title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.min.js"></script>
@@ -76,8 +78,7 @@ include_once 'settings.php';
                 <ul class="top-nav">
                     <li id="homeBt"><a href="index.php">Home</a></li>
                     <li id="newsBt"><a href="news.php">News</a></li>
-                    <li id="supportBt"><a href="support.php">Support</a></li>
-                    <!--<li id="loginBt" class="contatct-active"><a href="login.php">Login</a></li>-->
+                    <li id="loginBt" class="contatct-active"><a href="login.php">Login</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
             </nav>
@@ -88,25 +89,11 @@ include_once 'settings.php';
     
     <div id="fea" class="features">
         <div class="container">
-            <div class="col-md-3 contact-left">
-             
-
+            <div class="col-md-12 contact-left">
+             <h3><span> </span> Support</h3>
+             <p>Send an email to <a style="color: #00A2C1">support@dymondcash.com</a> or <a style="color: #00A2C1">admin@dymondcash.com</a> for inqueries and complaints.</p>
             </div>
-            <div class="col-md-6 contact-left">
-                <h3><span> </span> Login</h3>
-<?php if (isset($_GET['error'])) echo '<p class="conditions"> <label id="alert"><span>*</span>' . $_GET['error'] . '</label></p>'; ?>
-                <form name="loginForm" id="loginForm" action="processLogin.php" method="POST" >
-                    <input name="email" id="email" type="email" placeholder="Email *">
-                    <input name="password" id="password" type="password" placeholder="Password *">
-
-                    <span class="submit-btn"><input type="submit" value="Login"></span>
-                </form><br>
-                <a href="fPassword.php" ><p style="color: #00A2C1">forgot password?</p></a>
-            </div>
-            <div class="col-md-3 contact-left">
-             
-
-            </div>
+            
 
             <div class="clearfix"> </div>
             

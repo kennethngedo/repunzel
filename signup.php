@@ -83,6 +83,7 @@ include_once 'settings.php';
                 <ul class="top-nav">
                     <li class="active"><a href="index.php" >Home</a></li>
                     <li id="newsBt"><a href="news.php">News</a></li>
+                    <li id="supportBt"><a href="support.php">Support</a></li>
                     <li id="loginBt" class="contatct-active"><a href="login.php">Login</a></li>
                 </ul>
                 <a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
@@ -112,6 +113,8 @@ include_once 'settings.php';
                         echo '70,000 and 140,000';
                     } else if ($package == 'platinum') {
                         echo '100,000 and 200,000';
+                    } else if ($package == 'uranium') {
+                        echo '200,000 and 400,000';
                     }
                     ?>
                     naira respectively.
@@ -123,19 +126,57 @@ include_once 'settings.php';
             </div>
             <div class="col-md-4 contact-left">
                 <h3><span> </span> Signup</h3>
-<?php if (isset($_GET['error'])) {
-    $error = htmlspecialchars($_GET['error']);
-    echo '<p class="conditions"> <label id="alert"><span>*</span>' . $error . '</label></p>';} ?>
+                <?php
+                if (isset($_GET['error'])) {
+                    $error = htmlspecialchars($_GET['error']);
+                    echo '<p class="conditions"> <label id="alert"><span>*</span>' . $error . '</label></p>';
+                }
+                ?>
                 <form name="signupForm" id="signupForm" action="processSignup.php" method="POST" >
                     <input name="firstname" id="firstname" type="text" required placeholder="Firstname *" >
-                    <input name="lastname" id="lastname" type="text" placeholder="Lastname *">
-                    <input name="phone" id="phone" type="number"  placeholder="Phone number *">
+                    <input name="lastname" id="lastname" required type="text" placeholder="Lastname *">
+                    <input name="phone" id="phone" required type="number"  placeholder="Phone number *">
                     <input name="accountname" id="accountname" type="text" required placeholder="Bank account name *">
                     <input name="accountnumber" id="accountnumber"  type="number" required placeholder="Bank account number *" >
-                    <input name="bank" id="bank" type="text" placeholder="Bank name *" >
-                    <input name="email" id="email" type="email" placeholder="Email *">
-                    <input name="password" id="password" type="password" placeholder="Password *">
-                    <input name="password_again" id="password_again" type="password" placeholder="Repeat password *">
+                    <select  type="password" name="bank" class="form-control" id="bank" required  >
+                                        <option value="" disabled selected style="display:none;">Bank name *</option>
+                                        <option value="Access Bank">Access Bank</option>
+                                        <option value="Citibank">Citibank</option>
+                                        <option value="Diamond Bank">Diamond Bank</option>
+                                        <option value="Ecobank">Ecobank</option>
+                                        <option value="Fidelity Bank">Fidelity Bank</option>
+                                        <option value="First Bank">First Bank</option>
+                                        <option value="First City Monument Bank (FCMB)">First City Monument Bank (FCMB)</option>
+                                        <option value="FSDH Merchant Bank">FSDH Merchant Bank</option>
+                                        <option value="Guarantee Trust Bank (GTB)">Guarantee Trust Bank (GTB)</option>
+                                        <option value="Heritage Bank">Heritage Bank</option>
+                                        <option value="Keystone Bank">Keystone Bank</option>
+                                        <option value="Rand Merchant Bank">Rand Merchant Bank</option>
+                                        <option value="Skye Bank">Skye Bank</option>
+                                        <option value="Stanbic IBTC Bank">Stanbic IBTC Bank</option>
+                                        <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                        <option value="Sterling Bank">Sterling Bank</option>
+                                        <option value="Suntrust Bank">Suntrust Bank</option>
+                                        <option value="Union Bank">Union Bank</option>
+                                        <option value="United Bank for Africa (UBA)">United Bank for Africa (UBA)</option>
+                                        <option value="Unity Bank">Unity Bank</option>
+                                        <option value="Wema Bank">Wema Bank</option>
+                                        <option value="Zenith Bank">Zenith Bank</option>
+                                    </select>
+                    <input name="email" id="email" type="email" required placeholder="Email *">
+                    <input name="password" id="password" required type="password" placeholder="Password *">
+                    <input name="password_again" id="password_again" required type="password" placeholder="Repeat password *">
+                    <select  type="text" name="securityquestion" class="form-control" id="securityquestion" required  >
+                        <option value="" disabled selected style="display:none;">Security question *</option>
+                        <option>What was your favorite place to visit as a child?</option>
+                        <option>Who is your favorite actor, musician, or artist?</option>
+                        <option>What is the name of your favorite pet?</option>
+                        <option>What is your mother's maiden name?</option>
+                        <option>What is your favorite color?</option>
+                        <option>Which is your favorite web browser?</option>
+                        <option>What street did you grow up on?</option>
+                    </select>
+                    <input name="securityQuestionAnswer" id="securityQuestionAnswer" type="text" required placeholder="Answer to security question *">
                     <input name="package" id="package" type="text" hidden value="<?php echo $package ?>">
 
                     <span class="submit-btn"><input type="submit" value="Signup"></span>
@@ -146,7 +187,7 @@ include_once 'settings.php';
         </div>
     </div>
     <!----//End-contact---->
-    
+
     <!----start-footer---->
     <div class="footer">
         <div class="container">

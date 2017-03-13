@@ -12,9 +12,7 @@ $sql = "UPDATE ph SET status='confirmed' WHERE transaction_code='" . $tc . "'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
-$sql = "UPDATE gh SET status='confirmed' WHERE transaction_code='" . $tc . "'";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
+
 
 $sql = "SELECT * FROM ph WHERE transaction_code = '$tc'";
 $result = $conn->query($sql);
@@ -24,6 +22,10 @@ if ($result->num_rows > 0) {
     $provider = $row['provider'];
     $reciever = $row['reciever'];
     $amount = $row['amount'];
+
+    $sql = "UPDATE gh SET status='confirmed', transaction_code='" . $tc . "' WHERE reciever='" . $reciever . "' AND amount='" . $amount . "' AND status='pending'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 
     $sql = "SELECT * FROM investors WHERE email ='" . $provider . "'";
     $result = $conn->query($sql);

@@ -28,14 +28,14 @@ if (!isset($user))
     header("location: /index.php"); 
 
 $helpQuery = "SELECT * FROM ph WHERE status NOT LIKE '%confirmed%' AND (provider='" . $user . "' OR reciever='" . $user . "')";
-$result = $conn->query($helpQuery);
+$result1 = $conn->query($helpQuery);
 $task = '';
 $isto1 = '';
 $isto2 = '';
 $isto = '';
 $timeleft = '';
 
-while ($row = $result->fetch_assoc()) {
+while ($row = $result1->fetch_assoc()) {
     $status = $row['status'];
     $reciever = $row['reciever'];
     $provider = $row['provider'];
@@ -44,7 +44,6 @@ while ($row = $result->fetch_assoc()) {
     $iDate = $row['initiation_date'];
     $cDate = $row['completion_date'];
     $tc = $row['transaction_code'];
-
 
 
     if ($user == $provider) {
@@ -62,10 +61,10 @@ while ($row = $result->fetch_assoc()) {
         }
 
         if ($status == 'pending') {
-            $task = $task . '<h3>Provide Help</h3>
-                        <p>Please wait to recieve PH task.</p>';
+            $task = $task . '<div class="col-md-12 features-grid upload ' .$isto . '" style="text-align: left"><h3>Provide Help</h3>
+                        <p>Please wait to recieve PH task.</p></div>';
         } else if ($status == 'matched') {//help has been matched
-            $task = $task . '<h3>Provide Help</h3>
+            $task = $task . '<div class="col-md-12 features-grid upload ' .$isto . '" style="text-align: left"><h3>Provide Help</h3>
                     <p>Serial: ' . $tc . '</p>
                         <p>Amount: ' . $amount . '</p>
                         <p id="tleft" onshow="calculateTime();">Time left: ' . $timeleft . '</p>
@@ -80,10 +79,10 @@ while ($row = $result->fetch_assoc()) {
                                 <input name="fileToUpload" id="fileToUpload" type="file" required placeholder="upload pop *">
                                 <input style="margin-bottom: 20px" type="submit" value="Upload">
                             </form>
-                        </div>';
+                        </div></div>';
         } else {
 
-            $task = $task . '<h3>Provide Help</h3>
+            $task = $task . '<div class="col-md-12 features-grid upload' .$isto . '" style="text-align: left"><h3>Provide Help</h3>
                     <p>Serial: ' . $tc . '</p>
                         <p>Amount: ' . $amount . '</p>
                             <p id="tleft" onshow="calculateTime();">Time left: ' . $timeleft . '</p>
@@ -92,7 +91,7 @@ while ($row = $result->fetch_assoc()) {
                         <p>Account name: ' . $accountname . '.</p>
                         <p>Account number: ' . $accountnumber . '.</p>
                         <p>Bank: ' . $bank . '.</p>
-                        <img src="' . $pop . '" style="max-height: 100%; max-width:100%; margin: 0px; margin-bottom: 20px"/>';
+                        <img src="' . $pop . '" style="max-height: 100%; max-width:100%; margin: 0px; margin-bottom: 20px"/></div>';
         }
     } else {
         $isto = 'gh';
@@ -108,18 +107,18 @@ while ($row = $result->fetch_assoc()) {
         }
 
         if ($status == 'pending') {
-            $task = $task . '<h3>Get Help</h3>
-                        <p>Please wait to recieve GH task.</p>';
+            $task = $task . '<div class="col-md-12 features-grid upload ' .$isto . '" style="text-align: left"><h3>Get Help</h3>
+                        <p>Please wait to recieve GH task.</p></div>';
         } else if ($status == 'matched') {
-            $task = $task . '<h3>Get Help</h3>
+            $task = $task . '<div class="col-md-12 features-grid upload ' .$isto . '" style="text-align: left"><h3>Get Help</h3>
                     <p>Serial: ' . $tc . '</p>
                         <p>Amount: ' . $amount . '</p>
                             <p id="tleft" onshow="calculateTime();">Time left: ' . $timeleft . '</p>
                         <p>Sender: ' . $sender . '</p>
                         <p>Phone: ' . $phone . '.</p>
-                        ';
+                        </div>';
         } else {
-            $task = $task . '<h3>Get Help</h3>
+            $task = $task . '<div class="col-md-12 features-grid upload ' .$isto . '" style="text-align: left"><h3>Get Help</h3>
                     <p>Serial: ' . $tc . '</p>
                         <p>Amount: ' . $amount . '</p>
                             <p id="tleft" onshow="calculateTime();">Time left: ' . $timeleft . '</p>
@@ -131,7 +130,7 @@ while ($row = $result->fetch_assoc()) {
                                 <input name="tc" id="tc" type="text" hidden value="' . $tc . '">
                                 <input style="margin-bottom: 20px" type="submit" value="Confirm">
                             </form>
-                        </div>';
+                        </div></div>';
         }
     }
 }
@@ -269,10 +268,10 @@ while ($row = $result->fetch_assoc()) {
                     ?>
 
                 </div>
-                <div class="col-md-8 features-grid <?php echo $isto; ?>">
-                    <div class="col-md-12 features-grid upload" style="text-align: left">
+                <div class="col-md-8 features-grid ">
+                    
                         <?php echo $task; ?>
-                    </div>
+                    
 
                 </div>
                 <div class="col-md-2 features-grid">

@@ -99,7 +99,7 @@ include_once 'settings.php';
         <div class="container">
             <div class="head text-center">
                 <h3><span> </span> Get Started</h3>
-                <p>Select a package to register to. There are four packages; choose the one which bests suits you. </p>
+                <p>Select a package to register to. There are six packages; choose the one which bests suits you. </p>
             </div>
             <!---- start-features-grids---->
             <div class="features-grids text-center">
@@ -169,7 +169,7 @@ include_once 'settings.php';
                     <span class="col-md-5 w-icon"> <i class="fa fa-star"> </i></span>
                     <div class="col-md-7 work-info">
                         <h4>Choose a package and register</h4>
-                        <p> Select from four different packages as it suits you, this will determine the amount of money you will PH and or GH. Continue to the registration form and fill in all relevant details. You will receive an email with an activation link, click this link to activate your account. </p>
+                        <p> Select from six different packages as it suits you, this will determine the amount of money you will PH and or GH. Continue to the registration form and fill in all relevant details. You will receive an email with an activation link, click this link to activate your account. </p>
                     </div>
                 </div>
                 <div class="col-md-4 work-grid center-work-grid">

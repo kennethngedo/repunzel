@@ -79,6 +79,7 @@ include_once 'settings.php';
                     <li class="page-scroll"><a href="#port" class="scroll">How It Works</a></li>
                     <li class="page-scroll"><a href="#fea" class="scroll">Get Started</a></li>
                     <li class="page-scroll"><a href="#test" class="scroll">Testimonials</a></li>
+                    <li id="supportBt"><a href="support.php">Support</a></li>
                     <li id="newsBt"><a href="news.php">News</a></li>
                     <li id="loginBt" class="contatct-active"><a href="login.php">Login</a></li>
                 </ul>
@@ -249,7 +250,12 @@ include_once 'settings.php';
     </div>
     <div class="clearfix"> </div>
     <!----//End-testmonial-time-line---->
-
+<div class="col-md-12 contact-left">
+    <center>
+             <h3><span> </span> Support</h3>
+             <p>Send an email to <a style="color: #00A2C1">dymondcare@gmail.com</a> for inqueries and complaints.</p>
+            </div>
+</center>
 
 
     <!----start-footer---->

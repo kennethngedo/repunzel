@@ -105,6 +105,9 @@ if (isset($_GET['reason'])) {
                 <h3><span> </span> <?php echo $reason; ?></h3>
                 <?php
                 if ($reason == 'Signup Success') {
+
+
+
                     echo '<p>Welcome ' . $_SESSION['new_user'] . '</p>
                 <p>Your registration was successful, and a message with an activation link has been sent to your inbox. Please access this email and click the activation 
                     link therein to activate your account.</p>
@@ -116,6 +119,36 @@ if (isset($_GET['reason'])) {
                         $sql = "UPDATE investors SET account_status='active' WHERE reference_code='" . $referenceCode . "'";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
+
+                        $helpQuery = "SELECT * FROM investors WHERE reference_code='" . $referenceCode . "'";
+                        $result = $conn->query($helpQuery);
+                        if ($row = $result->fetch_assoc()) {
+                            $email = $row['email'];
+                            $package = $row['package'];
+                            $status = 'pending';
+                            $transaction_code = strtoupper(substr(md5(uniqid("this is my site 491", true)), 0, 10));
+
+                            if ($package == 'starter') {
+                                $amount = '10000';
+                            } else if ($package == 'bronze') {
+                                $amount = '20000';
+                            } else if ($package == 'silver') {
+                                $amount = '50000';
+                            } else if ($package == 'gold') {
+                                $amount = '70000';
+                            } else if ($package == 'platinum') {
+                                $amount = '100000';
+                            } else {
+                                $amount = '200000';
+                            }
+                        }
+
+
+
+                        $insertQuery = "INSERT INTO ph (provider, amount, status, transaction_code )"
+                                . " VALUES('$email','$amount', '$status', '$transaction_code')";
+
+                        $result = $conn->query($insertQuery);
 
                         echo '<p>Great Stuff.</p>
                 <p>Your account has been activated, you can now proceed to login with the email and password that you provided during your registration.</p>

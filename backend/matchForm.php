@@ -18,7 +18,7 @@ if ($provider == $receiver) {
     echo 0;
 } else {
 
-    if ($ramount < $ramount) {
+    if ($ramount < $amount) {
         echo 2;
     } else {
 

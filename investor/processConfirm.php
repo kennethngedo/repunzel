@@ -48,20 +48,15 @@ if ($result->num_rows > 0) {
         $amount1 = '50000';
     } else if ($package == 'gold') {
         $amount1 = '70000';
-    } else if($package == 'platinum'){
+    } else if ($package == 'platinum') {
         $amount1 = '100000';
-    }else{
+    } else {
         $amount1 = '200000';
     }
     if ($priviledges == 'user') {
         $transaction_code = strtoupper(substr(md5(uniqid("this is my site 491", true)), 0, 10));
         $insertQuery = "INSERT INTO ph (provider, amount, status, transaction_code )"
-                . " VALUES('$reciever','$amount1', '$status', '$transaction_code')";
-        $conn->query($insertQuery);
-    } else {
-        $insertQuery = "INSERT INTO gh (reciever, amount )"
-                . " VALUES('$reciever','$amount')";
-
+                . " VALUES('$reciever','$amount', '$status', '$transaction_code')";
         $conn->query($insertQuery);
     }
 
@@ -73,11 +68,9 @@ if ($result->num_rows > 0) {
     $priviledges = $row['priviledges'];
     $earnings = $earnings - $amount;
 
-    if ($earnings <= 0) {
-        $sql = "UPDATE investors SET earnings_total='" . $earnings . "' WHERE email='" . $reciever . "'";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-    }
+    $sql = "UPDATE investors SET earnings_total='" . $earnings . "' WHERE email='" . $reciever . "'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 
     if ($priviledges == 'user') {
         $insertQuery = "INSERT INTO gh (reciever, amount )"

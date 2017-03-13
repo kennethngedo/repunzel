@@ -221,6 +221,8 @@ while ($row = $result->fetch_assoc()) {
             <div class="head text-center">
                 <h3><span> </span> Back office</h3>
                 <p>See who you have been paired to pay and who has been paired to pay you.</p>
+                <p>if pairing is not displaying, check back shortly.</p>               
+
                 <?php if (isset($_GET['error'])) echo '<p style="color:red"> ' . $_GET['error'] . '</p>'; ?>
             </div>
             <!---- start-features-grids---->

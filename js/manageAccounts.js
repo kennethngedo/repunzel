@@ -26,6 +26,7 @@ $(document).ready(function () {
 
         var classnameDelete = document.getElementsByClassName("mADelete");
         var classnameChange = document.getElementsByClassName("mAChange");
+        var classnamePriv = document.getElementsByClassName("mPriv");
 
         var myFunction = function (evt) {
             var attribute = this.getAttribute("name");
@@ -53,9 +54,40 @@ $(document).ready(function () {
 
             return false;
         };
+        
+        var myFunction = function (evt) {
+            var attribute = this.getAttribute("name");
+//            alert(attribute);
+
+            var ref = attribute.split("/")[0];
+            var status = attribute.split("/")[1];
+
+            var formData = {'ref': ref, 'priviledges': status};
+
+            if (confirm('Are you sure you want to change the admin privileges for: ' + ref + '?')) {
+
+                $.ajax({
+                    url: '/backend/privInvestor.php',
+                    type: 'post',
+                    data: formData,
+                    success: matchResponce,
+                    error: function (xhr, desc, err) {
+                        alert(xhr);
+                        return false;
+                    },
+                    dataType: 'text'
+                });
+            }
+
+            return false;
+        };
 
         for (var i = 0; i < classnameDelete.length; i++) {
             classnameDelete[i].addEventListener('click', myFunction);
+        }
+        
+        for (var i = 0; i < classnamePriv.length; i++) {
+            classnamePriv[i].addEventListener('click', myFunction3);
         }
 
 

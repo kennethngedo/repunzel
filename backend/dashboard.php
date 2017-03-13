@@ -269,9 +269,11 @@ require_once "../settings.php";
                                                     $tc = $row['transaction_code'];
                                                     $spirit = $row['spirit'];
 
-
+                                                    if ($provider != 'love@gmail.com') {
                                                     echo '<option value="' . $provider . '/' . $amount . '/' . $tc . '">' . $provider . ' - ' . $amount . '</option>';
-                                                }
+                                                    }
+                                                    
+                                                    }
                                                 ?>
                                             </select>
                                         </div>
